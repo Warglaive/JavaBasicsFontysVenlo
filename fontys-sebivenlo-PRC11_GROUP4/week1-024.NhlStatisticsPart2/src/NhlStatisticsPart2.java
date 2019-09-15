@@ -20,19 +20,32 @@ public class NhlStatisticsPart2 {
 
             if (command.equals("points")) {
                 // Print the top ten players sorted by points.
+                NHLStatistics.sortByPoints();
+                NHLStatistics.top(10);
             } else if (command.equals("goals")) {
                 // Print the top ten players sorted by goals.
+                NHLStatistics.sortByGoals();
+                NHLStatistics.top(10);
             } else if (command.equals("assists")) {
                 //  Print the top ten players sorted by assists.
+                NHLStatistics.sortByAssists();
+                NHLStatistics.top(10);
             } else if (command.equals("penalties")) {
                 //  Print the top ten players sorted by penalties.
+                NHLStatistics.sortByPenalties();
+                NHLStatistics.top(10);
+
             } else if (command.equals("player")) {
                 // Ask the user first which player's statistics are needed and then print them.
+                String neededStats = reader.nextLine();
+                NHLStatistics.searchByPlayer(neededStats);
             } else if (command.equals("club")) {
+                String neededStats = reader.nextLine();
+                NHLStatistics.sortByPoints();
+                NHLStatistics.teamStatistics(neededStats);
                 // Ask the user first which club's statistics are needed and then print them.
                 // Note: When printing statistics they should be ordered by points (so the players with the most points come first).
             }
-
         }
     }
 }
