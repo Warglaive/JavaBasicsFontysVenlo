@@ -1,10 +1,19 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MoreThanOnce {
 
     public static boolean moreThanOnce(ArrayList<Integer> list, int searched) {
-        // write your code here
+        int numCount = 0;
+        for (int num : list) {
+            if (num == searched) {
+                numCount++;
+            }
+        }
+        if (numCount > 1) {
+            return true;
+        }
         return false;
     }
 
@@ -15,7 +24,7 @@ public class MoreThanOnce {
         list.add(2);
         list.add(7);
         list.add(2);
-        
+
         System.out.println("Type a number: ");
         int number = Integer.parseInt(reader.nextLine());
         if (moreThanOnce(list, number)) {
