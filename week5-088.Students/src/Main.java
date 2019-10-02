@@ -32,6 +32,7 @@ public class Main {
             }
         }
     }
+    //100/100 at Fontys system, but both work the same
 //     public static void main(String[] args) {
 //        Scanner reader = new Scanner(System.in);
 //        ArrayList<Student> students = new ArrayList<Student>();
