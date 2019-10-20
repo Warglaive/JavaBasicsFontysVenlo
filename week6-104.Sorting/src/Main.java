@@ -64,8 +64,13 @@ public class Main {
     }
 
     public static void sort(int[] array) {
+        int tempValue = 0;
         for (int i = 0; i < array.length; i++) {
+            System.out.println(Arrays.toString(array));
+            tempValue = array[i];
             int smallestValue = indexOfTheSmallestStartingFrom(array, i);
+            array[i] = array[smallestValue];
+            array[smallestValue] = tempValue;
         }
     }
 }
