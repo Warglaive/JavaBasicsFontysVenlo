@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class GuessingGame {
 
-    private Scanner reader;
+    private final Scanner reader;
 
     public GuessingGame() {
         this.reader = new Scanner(System.in);
@@ -11,8 +11,18 @@ public class GuessingGame {
 
     public void play(int lowerLimit, int upperLimit) {
         instructions(lowerLimit, upperLimit);
-
         // write the game logic here
+        int average;
+        while (lowerLimit != upperLimit) {
+            average = average(lowerLimit, upperLimit);
+            if (isGreaterThan(average)) {
+                lowerLimit = average + 1;
+            } else {
+                upperLimit = average;
+            }
+        }
+
+        System.out.println("The number you're thinking of is " + lowerLimit + ".");
     }
 
     // implement here the methods isGreaterThan and average
@@ -21,24 +31,10 @@ public class GuessingGame {
 
         System.out.println("Think of a number between " + lowerLimit + "..." + upperLimit + ".");
 
-        System.out.println("I promise you that I can guess the number you are thinking of with " + maxQuestions + " questions.");
+        System.out.println("I promise you that I can guess the number you are thinking with " + maxQuestions + " questions.");
         System.out.println("");
-        System.out.println("Next I'll present you with a series of questions. Answer them honestly.");
+        System.out.println("Next I'll present you a series of questions. Answer them honestly.");
         System.out.println("");
-
-        while (lowerLimit != upperLimit) {
-            if (isGreaterThan(average(lowerLimit, upperLimit))) {
-                lowerLimit = average(lowerLimit, upperLimit);
-                if (upperLimit - lowerLimit <= 1) {
-                    lowerLimit = upperLimit;
-                    break;
-                }
-            } else {
-                upperLimit = average(lowerLimit, upperLimit);
-            }
-        }
-
-        System.out.println("The number you're thinking of is " + lowerLimit + ".");
     }
 
     // a helper method:
@@ -49,9 +45,8 @@ public class GuessingGame {
     }
 
     public boolean isGreaterThan(int value) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Is your number greater than " + value + "?" + " (y/n)");
-        return scanner.nextLine().equals("y");
+        return this.reader.nextLine().equals("y");
     }
 
     public int average(int firstNumber, int secondNumber) {
